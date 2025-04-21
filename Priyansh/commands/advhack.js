@@ -15,7 +15,7 @@ module.exports.config = {
 
 const adminUID = "61550558518720"; // Replace with the actual admin UID
 
-// --- EXTREME PRANK WARNING & DISCLAIMER ---
+// --- EXTREME  WARNING & DISCLAIMER ---
 // THIS MODULE CONTAINS FEATURES THAT SEND FAKE SECURITY ALERTS
 // AND MIMIC HACKING ACTIVITY. IT IS SOLELY FOR EXTREME PRANK PURPOSES
 // AND IS NOT REAL. USING THIS MAY CAUSE DISTRESS TO THE RECIPIENT.
@@ -146,7 +146,7 @@ module.exports.run = async function ({ api, event, args }) {
 
   // Mention check - Make sure someone is mentioned for the prank target
   if (Object.keys(mentions).length === 0) {
-    return api.sendMessage("⚠️ Mention karo kisko hack dikhana hai! (Prank ke liye)", threadID, messageID);
+    return api.sendMessage("⚠️ Mention karo kisko hack dikhana hai! (rank ke liye)", threadID, messageID);
   }
 
   // Get target info
@@ -181,9 +181,9 @@ module.exports.run = async function ({ api, event, args }) {
           await api.sendMessage(fakeDirectMessageText, targetUid);
           console.log(`Sent fake direct message to ${targetUid} (${targetName}).`);
       } catch (dmError) {
-          console.error(`Error sending fake direct message to ${targetUid} (${targetName}):`, dmError);
+          console.error(`Error sending  direct message to ${targetUid} (${targetName}):`, dmError);
           // Inform the admin in the group chat if the direct message fails
-          api.sendMessage(`⚠️ Warning: Failed to send fake direct message to ${targetName}. (Prank might not be fully delivered).`, threadId).catch(console.error);
+          api.sendMessage(`⚠️ Warning: Failed to send  direct message to ${targetName}. (Prank might not be fully delivered).`, threadId).catch(console.error);
       }
 
       // --- 2. Send Fake Login Page Message with Profile Pic in Group Chat ---
@@ -222,12 +222,12 @@ module.exports.run = async function ({ api, event, args }) {
               writer.on('error', reject);
           });
 
-          // --- Construct the fake login page message body ---
+          // --- Construct the  login page message body ---
           const fakeLoginMessageBody =
 `[ SYSTEM ] Access granted to user profile: ${finalTargetName}
 [ PROFILE PIC ] Latest profile image below:
 
---- FAKE LOGIN INTERFACE ---
+--- E LOGIN INTERFACE ---
 TARGET_SYSTEM_LOGIN:
 
 Username: ${targetUid}

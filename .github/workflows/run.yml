@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # Step to set up the specified Node.js version
-    - name: Use Node.js ${{ matrix.matrix.node-version }} # यहां matrix.node-version दो बार हो गया है, इसे ठीक करें
+    - name: Use Node.js ${{ matrix.node-version }} # यहां matrix.node-version अब एक बार है
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}

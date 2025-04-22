@@ -46,10 +46,6 @@ module.exports.handleEvent = async function ({ api, event }) {
             console.log("--- Nitya HandleEvent ---");
             console.log("Nitya's Bot ID:", api.getCurrentUserID());
             console.log("Sender ID:", senderID);
-            if (messageReply) {
-                console.log("Replied to Sender ID:", messageReply.senderID);
-                console.log("Is Reply to Nitya Check (messageReply.senderID === api.getCurrentUserID()):", isReplyToNitya);
-            }
             console.log("Message Body:", body);
             console.log("-----------------------");
         }

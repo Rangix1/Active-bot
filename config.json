@@ -229,5 +229,12 @@
     "help2": {
         "autoUnsend": true,
         "delayUnsend": 300
+    },
+    "antiban": {
+        "autoDelay": true,
+        "minDelay": 5,
+        "maxDelay": 15,
+        "cooldownBetweenMsgs": 3000,
+        "autoTyping": true
     }
 }

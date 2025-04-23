@@ -1,53 +1,39 @@
-const trackedUsers = new Set();
+const fs = require("fs");
+const path = __dirname + "/../data/trackedUsers.json";
 
 module.exports.config = {
   name: "teg",
   version: "1.0.1",
-  hasPermssion: 2,
-  credits: "Lazer DJ Meham",
-  description: "Track ek user aur gali de usko jab bhi wo message kare",
-  commandCategory: "fun",
-  usages: "teg @user | stopteg",
-  cooldowns: 3
+  hasPermssion: 0,
+  credits: "Mohit",
+  description: "Track a user for flirty reply",
+  commandCategory: "love",
+  usages: "[mention or name]",
+  cooldowns: 5,
 };
 
-module.exports.run = async function({ api, event, args, mentions }) {
-  const { threadID, messageID, body } = event;
+module.exports.run = async function ({ api, event, args }) {
+  let mention = Object.keys(event.mentions)[0];
+  let nameToTrack = "";
+  let idToTrack = "";
 
-  if (body.toLowerCase().startsWith("stopteg")) {
-    trackedUsers.clear();
-    return api.sendMessage("Teg system OFF ho gaya hai.", threadID, messageID);
-  }
-
-  if (mentions && Object.keys(mentions).length > 0) {
-    const mentionID = Object.keys(mentions)[0];
-    const mentionName = mentions[mentionID].replace("@", "");
-
-    trackedUsers.add(mentionID);
-
-    return api.sendMessage({
-      body: `${mentionName}, tera record lag gaya hai. Ab kuch bhi likhega toh gali milegi.`,
-      mentions: [{ id: mentionID, tag: mentionName }]
-    }, threadID, messageID);
+  if (mention) {
+    idToTrack = mention;
+    nameToTrack = event.mentions[mention];
+  } else if (args.length > 0) {
+    nameToTrack = args.join(" ");
+    idToTrack = `NAME:${nameToTrack}`;
   } else {
-    return api.sendMessage("Pehle kisi ko mention karo jisko track karna hai.", threadID, messageID);
+    return api.sendMessage("Pehle kisi ko mention karo ya naam likho jisko track karna hai.", event.threadID, event.messageID);
   }
-};
 
-module.exports.handleEvent = async function({ api, event }) {
-  const { senderID, threadID } = event;
-
-  if (trackedUsers.has(senderID)) {
-    try {
-      const userInfo = await api.getUserInfo(senderID);
-      const name = userInfo[senderID]?.name || "bhosdike";
-
-      return api.sendMessage({
-        body: `${name}, fir aagaya maiya chudane!`,
-        mentions: [{ id: senderID, tag: name }]
-      }, threadID);
-    } catch (err) {
-      return api.sendMessage("Fir aagaya maiya chudane!", threadID);
-    }
+  let data = {};
+  if (fs.existsSync(path)) {
+    data = JSON.parse(fs.readFileSync(path));
   }
+
+  data[idToTrack] = nameToTrack;
+  fs.writeFileSync(path, JSON.stringify(data, null, 2));
+
+  return api.sendMessage(`${nameToTrack} ko track list me daal diya gaya hai!`, event.threadID);
 };

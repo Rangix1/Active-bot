@@ -1,5 +1,5 @@
 Module.exports.config = {
-    name: "fyt2", // *** Naya naam rakha hai "fyt2" ***
+    name: "2fyt", // *** Naya naam rakha hai "fyt2" ***
     version: "1.0.0",
     hasPermssion: 2, // *** Tumhare codes wala typo "hasPermssion" use kiya hai ***
     credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭 + Google Gemini", // Credits add/update kiye

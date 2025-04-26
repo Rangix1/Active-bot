@@ -4,7 +4,7 @@ module.exports.config = {
   name: "goibot",
   version: "1.0.2",
   hasPermssion: 0,
-  credits: "Fixed By Rudra Stylish + Typed by ChatGPT",
+  credits: "Fixed By Rudra Stylish + Styled by ChatGPT",
   description: "Flirty replies when someone says bot",
   commandCategory: "No prefix",
   usages: "No prefix needed",
@@ -20,8 +20,8 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
 
   const tl = [
 
-    // New 50 Flirty Messages - Added by Rudra Stylish
-    "Tumhare bina toh bot bhi udasi mein chala jaata hai...💔🤖",
+    // Flirty Messages - Rudra Stylish Collection
+    "Tumhare bina toh bot bhi udaasi mein chala jaata hai...💔🤖",
     "Aaj mausam bada suhana hai, Rudra Stylish ko tum yaad aa rahe ho...🌦️",
     "Aankhon mein teri ajab si adaayein hai...🤭",
     "Agar tum goibot ko dil se pukaarein, toh ye sirf tumhara ho jaaye...💞",
@@ -71,7 +71,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
     "Naam Rudra Stylish, kaam – teri smile banana...😁",
     "Tera reply na aaye toh CPU heat hone lagta hai...🌡️",
 
-    // Old Messages - Shifted Below
+    // Old Funny + Viral Lines
     "Kya Tu ELvish Bhai Ke Aage Bolega🙄",
     "Cameraman Jaldi Focus Kro 📸",
     "Lagdi Lahore di aa🙈",
@@ -136,8 +136,17 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
     const rand = tl[Math.floor(Math.random() * tl.length)];
     api.sendTypingIndicator(threadID, true);
 
+    const borders = [
+      "╔═══ ❖ ═══╗", 
+      "•─────✾─────•", 
+      "✿◕ ‿ ◕✿", 
+      "༺═────────────═༻",
+      "꧁༒☬✞☬༒꧂"
+    ];
+    const randomBorder = borders[Math.floor(Math.random() * borders.length)];
+
     const msg = {
-      body: `✨ ${name},\n\n『 ${rand} 』\n\n— Rudra Stylish 💖`
+      body: `${randomBorder}\n\n✨ 𝓗𝓮𝔂 ✨ *『 ${name} 』*\n\n『 ${rand} 』\n\n— Rudra Stylish 💖\n\n${randomBorder}`
     };
 
     api.sendTypingIndicator(threadID, false);
